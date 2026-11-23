@@ -1,0 +1,42 @@
+[
+  {
+    "question": "How long does delivery take?",
+    "must_contain": "3 to 5 working days",
+    "should_refuse": false
+  },
+  {
+    "question": "How many days until my parcel arrives?",
+    "must_contain": "3 to 5 working days",
+    "should_refuse": false
+  },
+  {
+    "question": "Is there a faster shipping option?",
+    "must_contain": "Express delivery",
+    "should_refuse": false
+  },
+  {
+    "question": "I typed the wrong address, can I fix it?",
+    "must_contain": "before the order is shipped",
+    "should_refuse": false
+  },
+  {
+    "question": "Can I send back something I bought?",
+    "must_contain": "within 7 days",
+    "should_refuse": false
+  },
+  {
+    "question": "When will I get my money back?",
+    "must_contain": "5 to 10 working days",
+    "should_refuse": false
+  },
+  {
+    "question": "What is the capital of France?",
+    "must_contain": "",
+    "should_refuse": true
+  },
+  {
+    "question": "Who won the football match yesterday?",
+    "must_contain": "",
+    "should_refuse": true
+  }
+]
