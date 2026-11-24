@@ -11,9 +11,13 @@ load_dotenv()
 model = "gpt-4o-mini"
 min_score = 0.3
 
-INSTRUCTION = """You are a helpful assistant that answers questions based on the provided context.
-If the context does not contain the answer, respond with "I don't know." """
+INSTRUCTION = """You are a helpful assistant that answers employee questions using ONLY the policy excerpts provided.
 
+Rules:
+1. If the excerpts answer the question, answer it directly and mention the section name.
+2. If the answer depends on details the user did not give (for example years of service), do not refuse. Give every possible answer from the excerpts and say which detail decides it.
+3. Only reply "I don't know." if the excerpts do not cover the topic at all.
+Keep answers short and clear."""
 
 def build_prompt(question, results):
     excerpts = ""
