@@ -7,8 +7,7 @@ from langchain_community.document_loaders import TextLoader
 
 
 def read_pdf_lines(file_path):
-    """Read a PDF and return its lines in order, as dictionaries:
-    {"text": ..., "size": font size, "page": page number}."""
+
     lines = []
     with pymupdf.open(file_path) as pdf:
         for page_number, page in enumerate(pdf, start=1):
@@ -22,8 +21,6 @@ def read_pdf_lines(file_path):
 
 
 def load_pdf(file_path):
-    """Read a PDF and return one dictionary per section.
-    A line that is clearly bigger than the normal body text starts a new section."""
     try:
         lines = read_pdf_lines(file_path)
     except Exception as e:
@@ -65,7 +62,6 @@ def load_pdf(file_path):
             last_was_heading = False
     save_section()
 
-    # Safety net: if no headings were found, fall back to one section per page
     if len([s for s in sections if s["heading"] != "Introduction"]) < 2:
         print(f"Note: no clear headings in {filename}, using one section per page instead.")
         by_page = {}
@@ -77,7 +73,7 @@ def load_pdf(file_path):
         ]
 
     for s in sections:
-        s["heading"] = re.sub(r"^\d+[.)]\s*", "", s["heading"])   # "1. Leave Policy" -> "Leave Policy"
+        s["heading"] = re.sub(r"^\d+[.)]\s*", "", s["heading"])   
     return sections
 
 
